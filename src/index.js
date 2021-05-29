@@ -578,6 +578,10 @@ class Service extends AdapterService {
           this.modifyQuery(countQuery, query.$modify);
         }
 
+        if (params.modifierFiltersResults !== false) {
+          countQuery.clear('groupBy');
+        }
+
         this.objectify(countQuery, query, null, null, query.$allowRefs);
 
         return countQuery
